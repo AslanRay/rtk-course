@@ -27,6 +27,7 @@ export default function reducer(state = initialState, action) {
     case PET_TAG_NUMBER_SETTED:
       return {
         ...state,
+        petTag: action.tagNumber,
       };
     case GET_PET_TAG_ATTEMPTED:
       return {
@@ -38,6 +39,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         isLoadingData: false,
         petsTag: action.petsTag,
+        isError: false,
       };
     case GET_PET_TAG_FAILED:
       return {

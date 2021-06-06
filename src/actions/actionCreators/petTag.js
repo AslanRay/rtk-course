@@ -2,8 +2,8 @@ import {
   PET_NAME_SETTED,
   PET_TAG_NUMBER_SETTED,
   GET_PET_TAG_ATTEMPTED,
-  // GET_PET_TAG_DONE,
-  // GET_PET_TAG_FAILED,
+  GET_PET_TAG_DONE,
+  GET_PET_TAG_FAILED,
   // SET_PET_TAG_ATTEMPTED,
   // SET_PET_TAG_DONE,
   // SET_PET_TAG_FAILED,
@@ -24,9 +24,14 @@ export function getPetTagFromAPI() {
 
       const response = await fetch('http://localhost:3001/petTag');
       const payload = await response.json();
-      console.log(payload);
+
+      if (payload.length) {
+        dispatch({ type: GET_PET_TAG_DONE, petsTag: payload });
+      } else {
+        dispatch({ type: GET_PET_TAG_FAILED });
+      }
     } catch (_) {
-      //
+      dispatch({ type: GET_PET_TAG_FAILED });
     }
   };
 }

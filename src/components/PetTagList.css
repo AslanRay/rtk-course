@@ -1,0 +1,16 @@
+.ListContainer {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ff4800;
+  border-radius: 5px;
+  margin-top: 32px;
+}
+
+.ListRow {
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
