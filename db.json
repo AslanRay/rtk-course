@@ -1,0 +1,19 @@
+{
+  "petTag": [
+    {
+      "id": 1,
+      "petName": "Wawa",
+      "tagNumber": "T4G123"
+    },
+    {
+      "petName": "Dogo",
+      "tagNumber": "T4G123",
+      "id": 2
+    },
+    {
+      "petName": "Kat",
+      "tagNumber": "T4G876",
+      "id": 3
+    }
+  ]
+}
