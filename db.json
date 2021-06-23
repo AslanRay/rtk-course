@@ -3,17 +3,37 @@
     {
       "id": 1,
       "petName": "Wawa",
-      "tagNumber": "T4G123"
+      "petTag": "T4G123"
     },
     {
       "petName": "Dogo",
-      "tagNumber": "T4G123",
+      "petTag": "T4G123",
       "id": 2
     },
     {
       "petName": "Kat",
-      "tagNumber": "T4G876",
+      "petTag": "T4G876",
       "id": 3
+    },
+    {
+      "petName": "LOLOL",
+      "petTag": "89SA",
+      "id": 4
+    },
+    {
+      "petName": "Mishi",
+      "petTag": "98SDFS",
+      "id": 5
+    },
+    {
+      "petName": "Slo",
+      "petTag": "SD8FSD8",
+      "id": 6
+    },
+    {
+      "petName": "Rosco",
+      "petTag": "B43KB3",
+      "id": 7
     }
   ]
 }

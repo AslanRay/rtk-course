@@ -4,9 +4,9 @@ import {
   GET_PET_TAG_ATTEMPTED,
   GET_PET_TAG_DONE,
   GET_PET_TAG_FAILED,
-  // SET_PET_TAG_ATTEMPTED,
-  // SET_PET_TAG_DONE,
-  // SET_PET_TAG_FAILED,
+  SET_PET_TAG_ATTEMPTED,
+  SET_PET_TAG_DONE,
+  SET_PET_TAG_FAILED,
 } from '../actionTypes/types';
 
 export function setPetName({ petName }) {
@@ -20,7 +20,7 @@ export function setPetTag({ tagNumber }) {
 export function getPetTagFromAPI() {
   return async (dispatch) => {
     try {
-      dispatch({ type: GET_PET_TAG_ATTEMPTED });
+      dispatch({ type: SET_PET_TAG_ATTEMPTED });
 
       const response = await fetch('http://localhost:3001/petTag');
       const payload = await response.json();
@@ -32,6 +32,33 @@ export function getPetTagFromAPI() {
       }
     } catch (_) {
       dispatch({ type: GET_PET_TAG_FAILED });
+    }
+  };
+}
+
+export function setPetTagFromAPI({ body }) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: GET_PET_TAG_ATTEMPTED });
+
+      const response = await fetch('http://localhost:3001/petTag', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+
+      const payload = await response.json();
+
+      if (payload.ok) {
+        dispatch({ type: SET_PET_TAG_DONE });
+      } else {
+        dispatch({ type: SET_PET_TAG_FAILED });
+      }
+    } catch (_) {
+      dispatch({ type: SET_PET_TAG_FAILED });
     }
   };
 }

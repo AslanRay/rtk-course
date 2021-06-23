@@ -6,11 +6,20 @@ import './PetTagList.css';
 const PetTagList = () => {
   const store = useSelector(({ petTag }) => ({ petTag }));
   const dispatch = useDispatch();
-  const { petTag: { petsTag, isLoadingData, isError } } = store;
+  const {
+    isPostOk,
+    petTag: { petsTag, isLoadingData, isError },
+  } = store;
 
   useEffect(() => {
     dispatch(getPetTagFromAPI());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isPostOk) {
+      dispatch(getPetTagFromAPI());
+    }
+  }, [dispatch, isPostOk]);
 
   return (
     <div className="ListContainer">
@@ -21,7 +30,7 @@ const PetTagList = () => {
       {!isLoadingData && !isError && petsTag.map((pt) => (
         <div className="ListRow" key={pt.id}>
           <span>{pt.petName}</span>
-          <span>{pt.tagNumber}</span>
+          <span>{pt.petTag}</span>
         </div>
       ))}
     </div>

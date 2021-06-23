@@ -4,9 +4,9 @@ import {
   GET_PET_TAG_ATTEMPTED,
   GET_PET_TAG_DONE,
   GET_PET_TAG_FAILED,
-  // SET_PET_TAG_ATTEMPTED,
-  // SET_PET_TAG_DONE,
-  // SET_PET_TAG_FAILED,
+  SET_PET_TAG_ATTEMPTED,
+  SET_PET_TAG_DONE,
+  SET_PET_TAG_FAILED,
 } from '../actions/actionTypes/types';
 
 const initialState = {
@@ -14,6 +14,7 @@ const initialState = {
   petTag: '',
   isLoadingData: false,
   isError: false,
+  isPostOk: false,
   petsTag: [],
 };
 
@@ -46,6 +47,21 @@ export default function reducer(state = initialState, action) {
         ...state,
         isLoadingData: false,
         isError: true,
+      };
+    case SET_PET_TAG_ATTEMPTED:
+      return {
+        ...state,
+        isPostOk: false,
+      };
+    case SET_PET_TAG_DONE:
+      return {
+        ...state,
+        isPostOk: true,
+      };
+    case SET_PET_TAG_FAILED:
+      return {
+        ...state,
+        isPostOk: false,
       };
     default:
       return state;
