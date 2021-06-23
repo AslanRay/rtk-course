@@ -38,7 +38,8 @@
             ".jsx"
           ]
         }
-      ]
+      ],
+      "import/prefer-default-export": [0]
     }
   },
   "browserslist": {
