@@ -1,13 +1,13 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import ReduxThnk from 'redux-thunk';
-import PetTagReducer from './reducers/petTag';
+import { configureStore } from '@reduxjs/toolkit';
+import PetTagReducer from './slices/petTag';
+import { petTagAPI } from './services/api';
 
-const reducers = combineReducers({
-  petTag: PetTagReducer,
+const store = configureStore({
+  reducer: {
+    petTag: PetTagReducer,
+    [petTagAPI.reducerPath]: petTagAPI.reducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(petTagAPI.middleware),
 });
-
-const middleware = [ReduxThnk];
-
-const store = createStore(reducers, {}, applyMiddleware(...middleware));
 
 export default store;

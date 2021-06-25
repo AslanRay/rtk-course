@@ -1,25 +1,9 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getPetTagFromAPI } from '../actions/actionCreators/petTag';
+import React from 'react';
+import { useGetPetTagFromAPIQuery } from '../services/api';
 import './PetTagList.css';
 
 const PetTagList = () => {
-  const store = useSelector(({ petTag }) => ({ petTag }));
-  const dispatch = useDispatch();
-  const {
-    isPostOk,
-    petTag: { petsTag, isLoadingData, isError },
-  } = store;
-
-  useEffect(() => {
-    dispatch(getPetTagFromAPI());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (isPostOk) {
-      dispatch(getPetTagFromAPI());
-    }
-  }, [dispatch, isPostOk]);
+  const { isLoading: isLoadingData, isError, data: petsTag } = useGetPetTagFromAPIQuery();
 
   return (
     <div className="ListContainer">
